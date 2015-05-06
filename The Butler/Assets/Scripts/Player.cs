@@ -5,16 +5,34 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour 
 {
     public bool _isLit;
-    List<Light> _lights;    // Lights influencing player
+    public float _speed;
 
 	void Start() 
     {
-        GameObject[] lightsArray = GameObject.FindGameObjectsWithTag("Interactable Lights");
-        _lights = new List<Light>(lightsArray.Length);
+        
 	}
-	
-	void Update() 
+
+    void Update()
     {
-	    
-	}
+        Vector3 direction = new Vector3();
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            direction.x -= 1.0f;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            direction.x += 1.0f;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            direction.z -= 1.0f;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            direction.z += 1.0f;
+        }
+
+        transform.Translate(direction * (_speed * Time.deltaTime));
+    }
 }
