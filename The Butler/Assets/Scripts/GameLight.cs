@@ -4,13 +4,13 @@ using System.Collections;
 public class GameLight : MonoBehaviour 
 {
     public Color _activateColour;
-    Color _normalColour;
+    protected Color _normalColour;
 
-    Light _light;
-    SphereCollider _collider;
-    Player _player;
+    protected Light _light;
+    protected SphereCollider _collider;
+    protected Player _player;
 
-	void Start() 
+	protected virtual void Start() 
     {
         _light      = GetComponent<Light>();
         _collider   = GetComponent<SphereCollider>();
@@ -20,13 +20,13 @@ public class GameLight : MonoBehaviour
         _normalColour = _light.color;
 	}
 	
-	void Update() 
+	protected virtual void Update() 
     {
         _collider.radius = _light.range;
 	}
 
     // OnTriggerEnter is called when the Collider other enters the trigger
-    void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.tag != "Player")
             return;
@@ -37,7 +37,7 @@ public class GameLight : MonoBehaviour
     }
 
     // OnTriggerExit is called when the Collider other has stopped touching the trigger
-    void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.tag != "Player")
             return;
