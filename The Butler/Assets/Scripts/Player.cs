@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour 
 {
     [Tooltip("Defines whether the player is being lit by light or not.")]
+#if UNITY_EDITOR
     [ReadOnly]
+#endif
     public bool _isLit;
 
     [Tooltip("Speed in units per second.")]
@@ -14,7 +16,9 @@ public class Player : MonoBehaviour
     [Tooltip("Health which the player will spawn with. Represents seconds the player can surivive outside of light.")]
     public float _maxHealth;
 
+#if UNITY_EDITOR
     [ReadOnly]
+#endif
     [Tooltip("Current Health. Represents seconds the player can surivive outside of light.")]
     public float _currentHealth;
 
