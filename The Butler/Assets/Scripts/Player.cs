@@ -110,4 +110,9 @@ public class Player : MonoBehaviour
             _currentHealth += a_value;
         }
     }
+
+    public float GetHealthPercent()
+    {
+
+    }
 }
