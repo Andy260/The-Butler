@@ -46,16 +46,19 @@ public class GameLight : MonoBehaviour
     public void OnTriggerStay(Collider a_other)
     {
         // Ignore if not player or light isn't active
-        if (!_activated || a_other.tag != "Player")
+        if (a_other.tag != "Player")
         {
             return;
         }
 
-        // Player is under this light
-        _player._isLit = true;
+        if (_activated)
+        {
+            // Player is under this light
+            _player._isLit = true;
 
-        // Increase player health
-        _player.IncreaseHealth(Time.deltaTime);
+            // Increase player health
+            _player.IncreaseHealth(Time.deltaTime);
+        }
 
         // Change colour to activation colour
         _light.color = _activateColour;
@@ -64,13 +67,16 @@ public class GameLight : MonoBehaviour
     public void OnTriggerExit(Collider a_other)
     {
         // Ignore if not player or light isn't active
-        if (!_activated || a_other.tag != "Player")
+        if (a_other.tag != "Player")
         {
             return;
         }
 
-        // Player should now be outside of light
-        _player._isLit = false;
+        if (_activated)
+        {
+            // Player should now be outside of light
+            _player._isLit = false;
+        }
 
         // Reset light colour
         _light.color = _normalColour;
