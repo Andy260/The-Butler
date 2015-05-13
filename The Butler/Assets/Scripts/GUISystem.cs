@@ -9,9 +9,6 @@ public class GUISystem : MonoBehaviour
 
 	void Start() 
     {
-        _successPrompt  = GameObject.Find("Success Prompt");
-        _failedPrompt   = GameObject.Find("Failure Prompt");
-
         _successPrompt.SetActive(false);
         _failedPrompt.SetActive(false);
 	}
