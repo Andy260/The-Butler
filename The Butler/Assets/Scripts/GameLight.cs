@@ -4,12 +4,15 @@ using System.Collections;
 public class GameLight : MonoBehaviour 
 {
     [Tooltip("Light's colour will change to this colour when within the influence of this light.")]
-    public Color _activateColour;
-    protected Color _normalColour;
+    public Color _activateColour;       // Colour to show when player is under this light (placeholder)
+    protected Color _normalColour;      // Normal Colour of light
 
-    protected Light _light;
-    protected SphereCollider _collider;
-    protected Player _player;
+    protected Light _light;             // Reference to light component of game object
+    protected SphereCollider _collider; // Reference to collider component of game object
+    protected Player _player;           // Reference to player within scene
+
+    [Tooltip("Whether or not this light is activated and will influence player.")]
+    public bool _activated;
 
 	protected virtual void Start() 
     {
@@ -37,12 +40,13 @@ public class GameLight : MonoBehaviour
 	protected virtual void Update() 
     {
         _collider.radius = _light.range;
+        _light.enabled = _activated;
 	}
 
     public void OnTriggerStay(Collider a_other)
     {
-        // Ignore if not player
-        if (a_other.tag != "Player")
+        // Ignore if not player or light isn't active
+        if (!_activated || a_other.tag != "Player")
         {
             return;
         }
@@ -59,8 +63,8 @@ public class GameLight : MonoBehaviour
 
     public void OnTriggerExit(Collider a_other)
     {
-        // Ignore if not player
-        if (a_other.tag != "Player")
+        // Ignore if not player or light isn't active
+        if (!_activated || a_other.tag != "Player")
         {
             return;
         }

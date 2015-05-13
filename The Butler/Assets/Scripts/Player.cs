@@ -22,6 +22,12 @@ public class Player : MonoBehaviour
     [Tooltip("Current Health. Represents seconds the player can surivive outside of light.")]
     public float _currentHealth;
 
+    public KeyCode _moveForwardKey  = KeyCode.UpArrow;
+    public KeyCode _moveBackwardKey = KeyCode.DownArrow;
+    public KeyCode _moveLeftKey     = KeyCode.LeftArrow;
+    public KeyCode _moveRightKey    = KeyCode.RightArrow;
+    public KeyCode _activateKey     = KeyCode.Space;
+
 	void Start() 
     {
 #if UNITY_EDITOR
@@ -71,19 +77,19 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3();
 
         // Get movement direction
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(_moveLeftKey))
         {
             direction.x -= 1.0f;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(_moveRightKey))
         {
             direction.x += 1.0f;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(_moveBackwardKey))
         {
             direction.z -= 1.0f;
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(_moveForwardKey))
         {
             direction.z += 1.0f;
         }
