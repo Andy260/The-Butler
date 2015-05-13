@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class GameLight : MonoBehaviour 
 {
     [Tooltip("Light's colour will change to this colour when within the influence of this light.")]
@@ -10,6 +11,10 @@ public class GameLight : MonoBehaviour
     protected Light _light;             // Reference to light component of game object
     protected SphereCollider _collider; // Reference to collider component of game object
     protected Player _player;           // Reference to player within scene
+
+    [Range(0.1f, 1.0f)]
+    [Tooltip("Scalar percentage to offset the collider by.")]
+    public float _colliderOffset = 1.0f;
 
     [Tooltip("Whether or not this light is activated and will influence player.")]
     public bool _activated;
@@ -39,10 +44,14 @@ public class GameLight : MonoBehaviour
 	
 	protected virtual void Update() 
     {
-        _collider.radius = _light.range;
+        _collider.radius = _light.range * _colliderOffset;
+
+#if !UNITY_GAME
         _light.enabled = _activated;
+#endif
 	}
 
+#if !UNITY_GAME
     public void OnTriggerStay(Collider a_other)
     {
         // Ignore if not player or light isn't active
@@ -81,4 +90,5 @@ public class GameLight : MonoBehaviour
         // Reset light colour
         _light.color = _normalColour;
     }
+#endif
 }

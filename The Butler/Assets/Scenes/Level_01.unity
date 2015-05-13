@@ -192,6 +192,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .667279422
       objectReference: {fileID: 0}
+    - target: {fileID: 13517928, guid: b038b319631102e41bf6eed21d2d982a, type: 2}
+      propertyPath: m_Radius
+      value: 7.42999983
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b038b319631102e41bf6eed21d2d982a, type: 2}
   m_IsPrefabParent: 0
@@ -471,6 +475,10 @@ Prefab:
     - target: {fileID: 10828256, guid: b038b319631102e41bf6eed21d2d982a, type: 2}
       propertyPath: m_Color.b
       value: .667279422
+      objectReference: {fileID: 0}
+    - target: {fileID: 13517928, guid: b038b319631102e41bf6eed21d2d982a, type: 2}
+      propertyPath: m_Radius
+      value: 7.42999983
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b038b319631102e41bf6eed21d2d982a, type: 2}
@@ -825,6 +833,14 @@ Prefab:
     - target: {fileID: 10828256, guid: b038b319631102e41bf6eed21d2d982a, type: 2}
       propertyPath: m_Color.r
       value: .889705896
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470010, guid: b038b319631102e41bf6eed21d2d982a, type: 2}
+      propertyPath: _colliderOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13517928, guid: b038b319631102e41bf6eed21d2d982a, type: 2}
+      propertyPath: m_Radius
+      value: 7.42999983
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b038b319631102e41bf6eed21d2d982a, type: 2}

@@ -22,13 +22,31 @@ public class Player : MonoBehaviour
     [Tooltip("Current Health. Represents seconds the player can surivive outside of light.")]
     public float _currentHealth;
 
+    [Tooltip("Key used for controlling forward movement.")]
     public KeyCode _moveForwardKey  = KeyCode.UpArrow;
+    [Tooltip("Key used for controlling backward movement.")]
     public KeyCode _moveBackwardKey = KeyCode.DownArrow;
+    [Tooltip("Key used for controlling left movement.")]
     public KeyCode _moveLeftKey     = KeyCode.LeftArrow;
+    [Tooltip("Key used for controlling right movement.")]
     public KeyCode _moveRightKey    = KeyCode.RightArrow;
+    [Tooltip("Key used for activating objects.")]
     public KeyCode _activateKey     = KeyCode.Space;
 
     GUISystem _guiSystem;   // Reference to GUI System game object
+
+    public bool canMove
+    {
+        get
+        {
+            return _canMove;
+        }
+        set
+        {
+            _canMove = value;
+        }
+    }
+    bool _canMove;
 
 	void Start() 
     {
@@ -54,6 +72,7 @@ public class Player : MonoBehaviour
 #endif
 
         _isLit          = false;
+        _canMove        = true;
         _currentHealth  = _maxHealth;
 
         _guiSystem = GameObject.Find("GUI System").GetComponent<GUISystem>();
@@ -73,7 +92,10 @@ public class Player : MonoBehaviour
             _guiSystem.EndLevel(false);
         }
 
-        HandleMovement();
+        if (canMove)
+        {
+            HandleMovement();
+        }
     }
 
     void HandleMovement()
