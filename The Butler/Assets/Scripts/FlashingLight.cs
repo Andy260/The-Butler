@@ -20,10 +20,8 @@ public class FlashingLight : GameLight
         if (_currentFlashTime <= 0.0f)
         {
             // Toggle light state and reset timer
-            _activated = !_activated;
-            _currentFlashTime = _flashRate;
-
-            Debug.Log("Light state toggled...");
+            _activated          = !_activated;
+            _currentFlashTime   = _flashRate;
         }
         else
         {

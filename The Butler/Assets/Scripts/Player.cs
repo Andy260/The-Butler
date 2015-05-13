@@ -113,6 +113,6 @@ public class Player : MonoBehaviour
 
     public float GetHealthPercent()
     {
-
+        return _currentHealth / _maxHealth;
     }
 }
