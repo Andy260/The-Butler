@@ -3,9 +3,6 @@ using System.Collections;
 
 public class ExitNode : MonoBehaviour
 {
-    [Tooltip("Scene to change to upon player success.")]
-    public int _scene;
-
     GUISystem _guiSystem;
 
 	void Start() 
