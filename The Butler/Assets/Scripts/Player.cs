@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     public KeyCode _moveRightKey    = KeyCode.RightArrow;
     public KeyCode _activateKey     = KeyCode.Space;
 
+    GUISystem _guiSystem;   // Reference to GUI System game object
+
 	void Start() 
     {
 #if UNITY_EDITOR
@@ -53,6 +55,8 @@ public class Player : MonoBehaviour
 
         _isLit          = false;
         _currentHealth  = _maxHealth;
+
+        _guiSystem = GameObject.Find("GUI System").GetComponent<GUISystem>();
 	}
 
     void Update()
@@ -63,10 +67,10 @@ public class Player : MonoBehaviour
             _currentHealth -= Time.deltaTime;
         }
 
-        // Reset level if player deemed dead
+        // End level if player health too low
         if (_currentHealth <= 0.0f)
         {
-            Application.LoadLevel(0);
+            _guiSystem.EndLevel(false);
         }
 
         HandleMovement();

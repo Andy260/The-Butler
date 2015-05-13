@@ -7,12 +7,10 @@ public class LightActivator : MonoBehaviour
     public GameLight _light;
 
     Player _player;                 // Reference to player in scene
-    SphereCollider _sphereCollider; // Reference to sphere collider
 
 	void Start() 
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
-        _sphereCollider = GetComponent<SphereCollider>();
 	}
 
 	void Update() 

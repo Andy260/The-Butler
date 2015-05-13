@@ -3,10 +3,10 @@ using System.Collections;
 
 public class HealthIndicator : MonoBehaviour 
 {
-    Light _dirLight;    // Reference to directional light
-    Player _player;     // Reference to player within scene
+    Light _dirLight;            // Reference to directional light
+    Player _player;             // Reference to player within scene
 
-    float _normalIntensity;
+    float _normalIntensity;     // Stores original intensity of directional light
 
 	void Start() 
     {
@@ -18,8 +18,10 @@ public class HealthIndicator : MonoBehaviour
 
     void Update()
     {
+        float playerHealth = _player.GetHealthPercent();
+
         // Update directional light intensity to 
         // be in sync with player health percentage
-        _dirLight.intensity = _player.GetHealthPercent() * _normalIntensity;
+        _dirLight.intensity = playerHealth * _normalIntensity;
     }
 }
