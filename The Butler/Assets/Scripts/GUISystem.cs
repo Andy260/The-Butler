@@ -9,17 +9,22 @@ public class GUISystem : MonoBehaviour
 
     Player _player;
 
+    Image _healthGUI_image;
+
 	void Start() 
     {
         _successPrompt.SetActive(false);
         _failedPrompt.SetActive(false);
 
-        _player = GameObject.Find("Player").GetComponent<Player>();
+        _player             = GameObject.Find("Player").GetComponent<Player>();
+        _healthGUI_image    = GameObject.Find("Health Indicator Overlay").GetComponent<Image>();
 	}
 	
 	void Update()
     {
-
+        RectTransform rectTransform = _healthGUI_image.rectTransform;
+        rectTransform.position      = new Vector3(0.0f, 0.0f, 0.0f);
+        rectTransform.sizeDelta     = new Vector2(Screen.width, Screen.height);
 	}
 
     public void EndLevel(bool a_success)
