@@ -12,16 +12,21 @@ public class HealthIndicator : MonoBehaviour
 
     RectTransform _backoutRect;     // Rectangle transform of blackout GUI element
 
+    [Tooltip("The percentage of player health for when the fullscreen blackout affect will begin.")]
+    [Range(0.0f, 1.0f)]
+    public float _blackHealthPercentage;
+
 	void Start()
     {
         // Get reference of player in scene
         GameObject gameObject   = GameObject.Find("Player");
         _player                 = gameObject.GetComponent<Player>();
 
-        // Get blackout GUI references
+        // Get blackout GUI references and initialise it
         gameObject              = GameObject.Find("Health Indicator Overlay");
         _blackoutGUI            = gameObject.GetComponent<Image>();
         _backoutRect            = gameObject.GetComponent<Image>().rectTransform;
+        _backoutRect.position   = new Vector3(0.0f, 0.0f, 0.0f);
 
         // Initiailise directional light
         _dirLight               = GetComponent<Light>();
@@ -31,17 +36,19 @@ public class HealthIndicator : MonoBehaviour
     void Update()
     {
         float playerHealth      = _player.GetHealthPercent();
+        Color colour            = _blackoutGUI.color;
 
         // Update directional light intensity to 
         // be in sync with player health percentage
         _dirLight.intensity     = playerHealth * _normalIntensity;
 
-        // Update health GUI element with current player percentage
-        Color colour            = _blackoutGUI.color;
-        colour.a                = 1.0f - playerHealth;
+        if (playerHealth < 0.5f)
+        {
+            // Update health GUI element with current player percentage
+            colour.a            = (1.0f - playerHealth);
+        }
 
         // Update blackout GUI element
-        _backoutRect.position   = new Vector3(0.0f, 0.0f, 0.0f);
         _backoutRect.sizeDelta  = new Vector2(Screen.width, Screen.height);
         _blackoutGUI.color      = colour;
     }
