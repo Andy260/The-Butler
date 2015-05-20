@@ -41,8 +41,13 @@ public class GUISystem : MonoBehaviour
         }
     }
 
-    public void ChangeScene(int a_scene)
+    public void ResetLevel()
     {
-        Application.LoadLevel(a_scene);
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void LoadNextLevel()
+    {
+        Application.LoadLevel(Application.loadedLevel + 1);
     }
 }
