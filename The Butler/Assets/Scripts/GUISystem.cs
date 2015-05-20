@@ -50,4 +50,9 @@ public class GUISystem : MonoBehaviour
     {
         Application.LoadLevel(Application.loadedLevel + 1);
     }
+
+    public void SwitchToLevelSelect()
+    {
+        Application.LoadLevel(0);
+    }
 }
