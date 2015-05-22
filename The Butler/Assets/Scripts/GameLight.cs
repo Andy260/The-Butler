@@ -4,8 +4,6 @@ using System.Collections;
 [ExecuteInEditMode]
 public class GameLight : MonoBehaviour 
 {
-    [Tooltip("Light's colour will change to this colour when within the influence of this light.")]
-    public Color _activateColour;       // Colour to show when player is under this light (placeholder)
     protected Color _normalColour;      // Normal Colour of light
 
     protected Light _light;             // Reference to light component of game object
@@ -21,16 +19,6 @@ public class GameLight : MonoBehaviour
 
 	protected virtual void Start() 
     {
-#if UNITY_EDITOR
-        if (_activateColour.r == 0.0f &&
-            _activateColour.g == 0.0f &&
-            _activateColour.b == 0.0f)
-        {
-            Debug.LogError("Light (" + transform.name + 
-                ") activation colour will be black with current settings");
-        }
-#endif
-
         // Get components
         _light      = GetComponent<Light>();
         _collider   = GetComponent<SphereCollider>();
@@ -68,9 +56,6 @@ public class GameLight : MonoBehaviour
             // Increase player health
             _player.IncreaseHealth(Time.deltaTime);
         }
-
-        // Change colour to activation colour
-        _light.color = _activateColour;
     }
 
     public void OnTriggerExit(Collider a_other)
