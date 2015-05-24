@@ -27,30 +27,30 @@ public class MovingLight : GameLight
 
 	protected override void Start() 
     {
-#if UNITY_EDITOR
-        bool errorsCaught = false;
-
-        if (_speed <= 0)
-        {
-            Debug.LogError("Moving Light (" + transform.name + ") speed cannot be less than 1");
-            errorsCaught = true;
-        }
-
-        if (!(_moveToPositions.Count > 0))
-        {
-            Debug.LogError("Moving Light (" + transform.name + 
-                ") must have at least one movement node attached to it!");
-            errorsCaught = true;
-        }
-
-        if (errorsCaught)
-        {
-            Debug.Break();
-        }
-#endif
-
 		if (Application.isPlaying) 
 		{
+#if UNITY_EDITOR
+            bool errorsCaught = false;
+
+            if (_speed <= 0)
+            {
+                Debug.LogError("Moving Light (" + transform.name + ") speed cannot be less than 1");
+                errorsCaught = true;
+            }
+
+            if (!(_moveToPositions.Count > 0))
+            {
+                Debug.LogError("Moving Light (" + transform.name +
+                    ") must have at least one movement node attached to it!");
+                errorsCaught = true;
+            }
+
+            if (errorsCaught)
+            {
+                Debug.Break();
+            }
+#endif
+
 			_startTime 		= Time.time;
 			_startMarker 	= transform.position;
 			_endMarker 		= _moveToPositions [_positionItr].position;
