@@ -4,11 +4,11 @@ using System.Collections;
 [ExecuteInEditMode]
 public class GameLight : MonoBehaviour 
 {
-    protected Color _normalColour;      // Normal Colour of light
+    public ParticleSystem _particleSystem;  // Reference to particle system of light
 
-    protected Light _light;             // Reference to light component of game object
-    protected SphereCollider _collider; // Reference to collider component of game object
-    protected Player _player;           // Reference to player within scene
+    protected Light _light;                 // Reference to light component of game object
+    protected SphereCollider _collider;     // Reference to collider component of game object
+    protected Player _player;               // Reference to player within scene
 
     [Range(0.1f, 1.0f)]
     [Tooltip("Scalar percentage to offset the collider by.")]
@@ -25,21 +25,21 @@ public class GameLight : MonoBehaviour
 
         // Find player within scene
         _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-
-        // Save normal colour of light
-        _normalColour = _light.color;
 	}
 	
 	protected virtual void Update() 
     {
         _collider.radius = _light.range * _colliderOffset;
 
-#if !UNITY_GAME
         _light.enabled = _activated;
-#endif
+        
+        // Update particle system
+        if (_particleSystem != null)
+        {
+            _particleSystem.enableEmission = _activated;
+        }
 	}
 
-#if !UNITY_GAME
     public void OnTriggerStay(Collider a_other)
     {
         // Ignore if not player or light isn't active
@@ -71,9 +71,5 @@ public class GameLight : MonoBehaviour
             // Player should now be outside of light
             _player._isLit = false;
         }
-
-        // Reset light colour
-        _light.color = _normalColour;
     }
-#endif
 }
