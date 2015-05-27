@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class GameLight : MonoBehaviour 
 {
     public ParticleSystem _particleSystem;  // Reference to particle system of light
@@ -14,8 +14,15 @@ public class GameLight : MonoBehaviour
     [Tooltip("Scalar percentage to offset the collider by.")]
     public float _colliderOffset = 1.0f;
 
+    float _lightChangeRate = 8.0f;          // Rate at which the light will slowly dim/brighten
+                                            // when the light activates or deactivates
+
+    float _normalLightIntensity;
+
     [Tooltip("Whether or not this light is activated and will influence player.")]
     public bool _activated;
+    bool _lastActivated_state = false;      // Used to denote when the light is either 
+                                            // activating or deactivating
 
 	protected virtual void Start() 
     {
@@ -25,20 +32,61 @@ public class GameLight : MonoBehaviour
 
         // Find player within scene
         _player = GameObject.FindWithTag("Player").GetComponent<Player>();
+
+        // Update last activated state, for activation and deactivation
+        _lastActivated_state = _activated;
+
+        // Assign variables used for light state changing
+        _normalLightIntensity = _light.intensity;
 	}
-	
+
 	protected virtual void Update() 
     {
-        _collider.radius = _light.range * _colliderOffset;
+        // Update collider
+        _collider.radius = (_light.range * _colliderOffset) * GetIntensityPercent();
 
-        _light.enabled = _activated;
-        
         // Update particle system
-        if (_particleSystem != null)
+        _particleSystem.enableEmission = _activated;
+
+        if (_lastActivated_state != _activated)
         {
-            _particleSystem.enableEmission = _activated;
+            HandleLightFade();
         }
 	}
+
+    float GetIntensityPercent()
+    {
+        if (_light.intensity == 0.0f)
+        {
+            return 0.0f;
+        }
+
+        return _light.intensity / _normalLightIntensity;
+    }
+
+    void HandleLightFade()
+    {
+        if (_activated)
+        {
+            if (_light.intensity >= _normalLightIntensity)
+            {
+                _light.intensity        = _normalLightIntensity;
+                _lastActivated_state    = _activated;
+            }
+
+            _light.intensity += Time.deltaTime * _lightChangeRate;
+        }
+        else
+        {
+            if (_light.intensity <= 0)
+            {
+                _light.intensity        = 0.0f;
+                _lastActivated_state    = _activated;
+            }
+
+            _light.intensity -= Time.deltaTime * _lightChangeRate;
+        }
+    }
 
     public void OnTriggerStay(Collider a_other)
     {
