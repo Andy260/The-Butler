@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     public KeyCode _moveRightKey    = KeyCode.RightArrow;
     [Tooltip("Key used for activating objects.")]
     public KeyCode _activateKey     = KeyCode.Space;
+    [Tooltip("Key used for pausing and unpausing the game.")]
+    public KeyCode _pauseKey        = KeyCode.Escape;
 
     GUISystem _guiSystem;   // Reference to GUI System game object
 
