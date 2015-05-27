@@ -1,26 +1,20 @@
 fileFormatVersion: 2
-guid: 65862a18a070e4e418674ae887598bff
-timeCreated: 1432085044
+guid: 252bcfb9bdb72ea48b853f4a73a69df4
+timeCreated: 1432692025
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Dframe_L
-    100002: Door_L
-    100004: //RootNode
-    400000: Dframe_L
-    400002: Door_L
-    400004: //RootNode
-    2300000: Dframe_L
-    2300002: Door_L
-    3300000: Dframe_L
-    3300002: Door_L
-    4300000: Dframe_L
-    4300002: Door_L
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Wall
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
-    materialSearch: 1
+    materialSearch: 2
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -70,7 +64,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

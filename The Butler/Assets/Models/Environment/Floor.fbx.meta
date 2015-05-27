@@ -1,21 +1,20 @@
 fileFormatVersion: 2
-guid: 51b5543c673004b488ffcc06c9138a41
-timeCreated: 1432085044
+guid: 743a37f8c30a619468041efe0e4e9809
+timeCreated: 1432692025
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Wall1
     400000: //RootNode
-    400002: Wall1
-    2300000: Wall1
-    3300000: Wall1
-    4300000: Wall1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Floor
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
-    materialSearch: 1
+    materialSearch: 2
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -31,7 +30,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -65,7 +64,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

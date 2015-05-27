@@ -1,21 +1,20 @@
 fileFormatVersion: 2
-guid: cbf57dfba0c7c5c43bb8e200e1db8588
-timeCreated: 1432085044
+guid: 8d1de5b19d6a0e04e9704f06add1dd90
+timeCreated: 1432692025
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Wall_Top
-    100002: //RootNode
-    400000: Wall_Top
-    400002: //RootNode
-    2300000: Wall_Top
-    3300000: Wall_Top
-    4300000: Wall_Top
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Window
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
-    materialSearch: 1
+    materialSearch: 2
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -65,7 +64,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
