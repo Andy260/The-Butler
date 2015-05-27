@@ -103,13 +103,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isLit: 0
   _speed: 5
-  _maxHealth: 1
+  _maxHealth: 1.5
   _currentHealth: 0
   _moveForwardKey: 273
   _moveBackwardKey: 274
   _moveLeftKey: 276
   _moveRightKey: 275
   _activateKey: 32
+  _pauseKey: 27
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
