@@ -516,22 +516,6 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!111 &100939404
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 100939398}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 2128ebe991a07734ea69b03fc159f8ff, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 2128ebe991a07734ea69b03fc159f8ff, type: 2}
-  - {fileID: 7400000, guid: 5799da6237895314bb8759fa360d3fd7, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!4 &123560797 stripped
 Transform:
   m_PrefabParentObject: {fileID: 413304, guid: 203d514f2106b28458c72e5adeb311ae, type: 2}
@@ -2119,7 +2103,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 494478, guid: aa9b3fb7f28e2b74f99317d6cbc0579f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -20.7000008
+      value: -23.1700001
       objectReference: {fileID: 0}
     - target: {fileID: 494478, guid: aa9b3fb7f28e2b74f99317d6cbc0579f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2257,7 +2241,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 494478, guid: aa9b3fb7f28e2b74f99317d6cbc0579f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14.6999998
+      value: -12.5799999
       objectReference: {fileID: 0}
     - target: {fileID: 494478, guid: aa9b3fb7f28e2b74f99317d6cbc0579f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2285,7 +2269,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 494478, guid: aa9b3fb7f28e2b74f99317d6cbc0579f, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa9b3fb7f28e2b74f99317d6cbc0579f, type: 2}
@@ -7909,7 +7893,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 440410, guid: a23cbf20d3ae16440bf2a093f363a346, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 11484966, guid: a23cbf20d3ae16440bf2a093f363a346, type: 2}
       propertyPath: _maxHealth
@@ -7947,6 +7931,10 @@ Prefab:
       propertyPath: m_Center.z
       value: -.0136528015
       objectReference: {fileID: 0}
+    - target: {fileID: 9566542, guid: a23cbf20d3ae16440bf2a093f363a346, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bb4438c3c48853a489f2c3400db343fc, type: 2}
     m_RemovedComponents:
     - {fileID: 6535346, guid: a23cbf20d3ae16440bf2a093f363a346, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a23cbf20d3ae16440bf2a093f363a346, type: 2}
