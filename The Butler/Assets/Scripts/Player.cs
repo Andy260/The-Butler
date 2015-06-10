@@ -37,18 +37,18 @@ public class Player : MonoBehaviour
 
     GUISystem _guiSystem;   // Reference to GUI System game object
 
-    public bool canMove
+    public bool isAlive
     {
         get
         {
-            return _canMove;
+            return _isAlive;
         }
         set
         {
-            _canMove = value;
+            _isAlive = value;
         }
     }
-    bool _canMove;
+    bool _isAlive;
 
 	void Start() 
     {
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 #endif
 
         _isLit          = false;
-        _canMove        = true;
+        _isAlive        = true;
         _currentHealth  = _maxHealth;
 
         _guiSystem = GameObject.Find("GUI System").GetComponent<GUISystem>();
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
             _guiSystem.EndLevel(false);
         }
 
-        if (canMove)
+        if (isAlive)
         {
             HandleMovement();
         }

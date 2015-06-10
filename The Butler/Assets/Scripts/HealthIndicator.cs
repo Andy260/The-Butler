@@ -41,6 +41,12 @@ public class HealthIndicator : MonoBehaviour
         Color colour            = _blackoutGUI.color;
         colour.a                = (1.0f - playerHealth);
 
+        if (!_player.isAlive)
+        {
+            _dirLight.intensity = 0.0f;
+            colour.a            = 1.0f;
+        }
+
         // Update blackout GUI element
         _backoutRect.sizeDelta  = new Vector2(Screen.width, Screen.height);
         _blackoutGUI.color      = colour;

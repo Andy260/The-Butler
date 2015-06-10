@@ -48,7 +48,7 @@ public class GUISystem : MonoBehaviour
 
     public void EndLevel(bool a_success)
     {
-        _player.canMove = false;
+        _player.isAlive = false;
 
         if (a_success)
         {
