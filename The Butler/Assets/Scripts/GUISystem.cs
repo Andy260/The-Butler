@@ -6,13 +6,15 @@ public class GUISystem : MonoBehaviour
 {
     public GameObject _successPrompt;   // Reference to success text GUI element
     public GameObject _failedPrompt;    // Reference to failed text GUI element
-    public GameObject _pausePrompt;      // Reference to pause text GUI element
+    public GameObject _pausePrompt;     // Reference to pause text GUI element
 
-    Player _player;
+    Player _player;                     // Reference to player in scene
 
-    Image _healthGUI_image;
+    Image _healthGUI_image;             // Image which will blackout the screen
+                                        // as player loses health
 
-    bool _isPaused = false;
+    bool _isPaused = false;             // Defines whether or not the game 
+                                        // is currently paused
     bool isPaused
     {
         get
@@ -67,12 +69,23 @@ public class GUISystem : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        Application.LoadLevel(Application.loadedLevel + 1);
+        int nextLevel       = Application.loadedLevel + 1;
+        int levelSelection  = 0;
+
+        if (Application.levelCount <= nextLevel)
+        {
+            Application.LoadLevel(nextLevel);
+        }
+        else
+        {
+            Application.LoadLevel(levelSelection);
+        }
     }
 
     public void SwitchToLevelSelect()
     {
         Application.LoadLevel(0);
+        Time.timeScale = 1.0f;
     }
 
     public void PauseGame()
