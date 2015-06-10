@@ -411,6 +411,7 @@ MonoBehaviour:
   _speed: 5
   _maxHealth: 1.5
   _currentHealth: 0
+  _maxTurnSpeed: 360
   _moveForwardKey: 273
   _moveBackwardKey: 274
   _moveLeftKey: 276

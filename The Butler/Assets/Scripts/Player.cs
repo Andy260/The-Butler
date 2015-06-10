@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 #endif
     [Tooltip("Current Health. Represents seconds the player can surivive outside of light.")]
     public float _currentHealth;
+    [Tooltip("Maximum speed the player will rotate towards movement direction, in degrees per-second.")]
+    public float _maxTurnSpeed;
 
     [Tooltip("Key used for controlling forward movement.")]
     public KeyCode _moveForwardKey  = KeyCode.UpArrow;
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     public KeyCode _pauseKey        = KeyCode.Escape;
 
     GUISystem _guiSystem;   // Reference to GUI System game object
+    Vector3 _moveDir;        // Current movement direction
 
     public bool isAlive
     {
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour
         _isLit          = false;
         _isAlive        = true;
         _currentHealth  = _maxHealth;
+        _moveDir        = new Vector3();
 
         _guiSystem = GameObject.Find("GUI System").GetComponent<GUISystem>();
 	}
@@ -94,36 +98,55 @@ public class Player : MonoBehaviour
             _guiSystem.EndLevel(false);
         }
 
+        // Update player movement
         if (isAlive)
         {
             HandleMovement();
         }
+
+        // Placeholder for testing...
+        _isAlive    = true;
+        _isLit      = true;
     }
 
     void HandleMovement()
     {
-        Vector3 direction = new Vector3();
+        _moveDir        = new Vector3();
+        bool isMoveing  = false;
 
         // Get movement direction
         if (Input.GetKey(_moveLeftKey))
         {
-            direction.x -= 1.0f;
+            _moveDir.x -= 1.0f;
+            isMoveing   = true;
         }
         if (Input.GetKey(_moveRightKey))
         {
-            direction.x += 1.0f;
+            _moveDir.x += 1.0f;
+            isMoveing   = true;
         }
         if (Input.GetKey(_moveBackwardKey))
         {
-            direction.z -= 1.0f;
+            _moveDir.z -= 1.0f;
+            isMoveing   = true;
         }
         if (Input.GetKey(_moveForwardKey))
         {
-            direction.z += 1.0f;
+            _moveDir.z += 1.0f;
+            isMoveing   = true;
         }
 
         // Apply translation
-        transform.Translate(direction * (_speed * Time.deltaTime));
+        transform.position += _moveDir * (_speed * Time.deltaTime);
+
+        // Only rotate player if moving
+        if (isMoveing)
+        {
+            Quaternion rotationQuat = Quaternion.LookRotation(_moveDir);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation,
+                rotationQuat, _maxTurnSpeed * Time.deltaTime);
+        }
     }
 
     public void IncreaseHealth(float a_value)
