@@ -104,6 +104,10 @@ public class GameLight : MonoBehaviour
             // Increase player health
             _player.IncreaseHealth(Time.deltaTime);
         }
+        else
+        {
+            _player._isLit = false;
+        }
     }
 
     public void OnTriggerExit(Collider a_other)
@@ -114,10 +118,7 @@ public class GameLight : MonoBehaviour
             return;
         }
 
-        if (_activated)
-        {
-            // Player should now be outside of light
-            _player._isLit = false;
-        }
+        // Player should now be outside of light
+        _player._isLit = false;
     }
 }
