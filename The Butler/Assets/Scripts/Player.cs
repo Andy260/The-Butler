@@ -118,10 +118,6 @@ public class Player : MonoBehaviour
             HandleMovement();
             HandleAnimations();
         }
-
-        // Placeholder for testing...
-        _isAlive    = true;
-        _isLit      = true;
     }
 
     void HandleMovement()
