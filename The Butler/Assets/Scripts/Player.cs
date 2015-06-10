@@ -37,8 +37,18 @@ public class Player : MonoBehaviour
     [Tooltip("Key used for pausing and unpausing the game.")]
     public KeyCode _pauseKey        = KeyCode.Escape;
 
-    GUISystem _guiSystem;   // Reference to GUI System game object
-    Vector3 _moveDir;        // Current movement direction
+    GUISystem _guiSystem;       // Reference to GUI System game object
+    Vector3 _moveDir;           // Current movement direction
+    Animator _animator;         // Reference to model animator
+
+    // Defines which state the player current is in
+    // in terms of movement
+    enum MovementState
+    {
+        IDLE,
+        MOVING
+    }
+    MovementState _currentMoveState;
 
     public bool isAlive
     {
@@ -76,12 +86,16 @@ public class Player : MonoBehaviour
         }
 #endif
 
-        _isLit          = false;
-        _isAlive        = true;
-        _currentHealth  = _maxHealth;
-        _moveDir        = new Vector3();
+        // Initialise variables
+        _isLit              = false;
+        _isAlive            = true;
+        _currentHealth      = _maxHealth;
+        _moveDir            = new Vector3();
+        _currentMoveState   = MovementState.IDLE;
 
-        _guiSystem = GameObject.Find("GUI System").GetComponent<GUISystem>();
+        // Get required components
+        _guiSystem  = GameObject.Find("GUI System").GetComponent<GUISystem>();
+        _animator   = transform.GetChild(0).GetComponent<Animator>();
 	}
 
     void Update()
@@ -102,6 +116,7 @@ public class Player : MonoBehaviour
         if (isAlive)
         {
             HandleMovement();
+            HandleAnimations();
         }
 
         // Placeholder for testing...
@@ -146,6 +161,20 @@ public class Player : MonoBehaviour
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation,
                 rotationQuat, _maxTurnSpeed * Time.deltaTime);
+        }
+
+        _currentMoveState = isMoveing ? MovementState.MOVING : MovementState.IDLE;
+    }
+
+    void HandleAnimations()
+    {
+        if (_currentMoveState == MovementState.IDLE)
+        {
+            _animator.Play("Player_Idle");
+        }
+        else
+        {
+            _animator.Play("Player_Movement");
         }
     }
 
