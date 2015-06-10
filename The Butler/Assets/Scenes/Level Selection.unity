@@ -731,7 +731,7 @@ Prefab:
         type: 3}
     - target: {fileID: 11488266, guid: cf1fff8baea1d124488384b653f77d1e, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf1fff8baea1d124488384b653f77d1e, type: 2}
