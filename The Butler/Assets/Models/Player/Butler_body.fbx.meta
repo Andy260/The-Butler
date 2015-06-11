@@ -1,33 +1,15 @@
 fileFormatVersion: 2
-guid: c2bf296b5148618489e285147ba47367
-timeCreated: 1432685471
+guid: 5260130b789d6084eaaeba73ab187474
+timeCreated: 1433982428
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCube20
-    100004: pCube21
-    100006: pCube22
-    100008: polySurface12
-    100010: The_Distraction5
-    100012: transform1
-    100014: transform2
-    100016: transform3
-    100018: transform4
     400000: //RootNode
-    400002: pCube20
-    400004: pCube21
-    400006: pCube22
-    400008: polySurface12
-    400010: The_Distraction5
-    400012: transform1
-    400014: transform2
-    400016: transform3
-    400018: transform4
-    2300000: pCube22
-    3300000: pCube22
-    4300000: pCube22
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Butler_body:pCube22
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -38,7 +20,7 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -48,7 +30,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
